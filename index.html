@@ -16,10 +16,19 @@
     <section class="preview" aria-label="Vista del sofá">
       <div class="intro"><span class="eyebrow">DEL MODELO A TU HOGAR</span><h1>Hazle espacio.</h1><p>Elige un color y descubre cómo se ve en tu sala.</p></div>
       <model-viewer id="sofa" src="sofa-190-gris.glb" alt="Sofá de dos puestos, modelo de prueba de Blender en color gris" camera-controls touch-action="pan-y" shadow-intensity="1" shadow-softness="1" exposure="1" camera-orbit="25deg 75deg auto" field-of-view="30deg" ar ar-modes="webxr scene-viewer quick-look" ar-scale="fixed" ar-placement="floor" xr-environment loading="eager">
+        <div class="ar-palette" aria-label="Colores durante la cámara">
+          <strong>Acabado del sofá</strong>
+          <div class="colors" role="group" aria-label="Cambiar color en tu espacio">
+            <button data-color="gris" aria-pressed="true"><i style="--swatch:#a1a6a3"></i>Gris</button>
+            <button data-color="arena" aria-pressed="false"><i style="--swatch:#d1c2aa"></i>Arena</button>
+            <button data-color="petroleo" aria-pressed="false"><i style="--swatch:#2c7e87"></i>Petróleo</button>
+          </div>
+        </div>
+        <div class="ar-guidance" role="status"><strong id="ar-step">Busca un piso despejado</strong><span id="ar-tip">Mueve el celular lentamente de lado a lado. Apunta al piso con buena luz.</span></div>
         <div slot="progress-bar" id="progress" role="status">Cargando tu sofá… <span id="percent">0 %</span></div>
         <button slot="ar-button" hidden aria-hidden="true" tabindex="-1">Ver en mi espacio</button>
       </model-viewer>
-      <p class="dimensions">190 × 104 × 89 cm <span>· medidas del modelo de prueba</span></p>
+      <p class="rotate-hint">↻ Para apreciar mejor el sofá, gira el celular horizontalmente antes de abrir la cámara.</p><p class="dimensions">Ancho 190 cm · Fondo 104 cm · Alto 89 cm <span>Medidas aproximadas del modelo de prueba; pendientes de medición del producto.</span></p>
     </section>
     <aside class="controls">
       <span class="eyebrow">SOFÁ DE DOS PUESTOS</span><h2>Tu espacio, tu color.</h2>
@@ -32,10 +41,31 @@
       <button id="ar" class="primary" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M7 9l5-3 5 3v6l-5 3-5-3zM7 9l5 3 5-3m-5 3v6"/></svg>Ver en mi espacio</button>
       <p id="status" role="status" aria-live="polite">Preparando el modelo…</p>
       <button id="retry" class="secondary" hidden>Volver a cargar</button>
-      <details class="help"><summary>¿Cómo lo veo en mi sala?</summary><ol><li>Abre esta página en Safari de iPhone o Chrome de Android.</li><li>Escoge el color y toca «Ver en mi espacio».</li><li>Permite el uso de la cámara y apunta hacia un piso bien iluminado.</li><li>Sigue la indicación del teléfono para colocar el sofá.</li></ol><p>La cámara requiere un dispositivo compatible. Vuelve a esta página para escoger otro color. Puedes seguir viendo el modelo 3D si tu equipo no admite realidad aumentada.</p></details>
+      <details class="fit-help"><summary>¿Cabe en el espacio que tengo?</summary>
+      <p>Mide el espacio libre con una cinta métrica e ingresa los centímetros. Usa la distancia disponible hasta el primer obstáculo.</p>
+      <div class="fit-fields"><label>Ancho libre (cm)<input id="fit-width" type="number" min="1" max="10000" inputmode="decimal" placeholder="Ej. 220"></label><label>Fondo libre (cm)<input id="fit-depth" type="number" min="1" max="10000" inputmode="decimal" placeholder="Ej. 140"></label><label>Altura libre (cm)<input id="fit-height" type="number" min="1" max="10000" inputmode="decimal" placeholder="Ej. 240"></label></div>
+      <p id="fit-result" role="status">Completa las tres medidas para compararlas con el sofá de prueba.</p><small>Comparación orientativa en posición frontal. No mide con la cámara ni detecta paredes, objetos o rutas de entrada. Deja espacio para circular.</small></details>
+      <details class="help"><summary>¿Cómo lo veo en mi sala?</summary><ol><li>Abre esta página en Safari de iPhone o Chrome de Android.</li><li>Escoge el color y toca «Ver en mi espacio».</li><li>Permite el uso de la cámara y apunta hacia un piso bien iluminado.</li><li>Sigue la indicación del teléfono para colocar el sofá.</li></ol><p>Busca primero un piso despejado y mueve el teléfono lentamente. Una vez colocado, acomoda el sofá con los gestos que indique el visor. En WebXR puedes cambiar el color arriba de la cámara; en el visor nativo de iPhone o Android, vuelve a esta página para escoger otro color. No se escanean ni se guardan planos de la habitación. Puedes seguir viendo el modelo 3D si tu equipo no admite realidad aumentada.</p></details>
       <details class="share"><summary>Pasar al celular</summary><img src="qr.svg" alt="Código QR para abrir este visor en el celular" width="168" height="168"><p><a id="share-link" href="https://dloaiza05.github.io/florenza-sofa-movil/">Abrir el visor móvil</a></p><button id="share" class="secondary">Compartir enlace</button></details>
-      <p class="note">Modelo básico para probar visualización y cámara. Los colores son orientativos y las medidas están pendientes de verificación física. Esta página no graba ni sube imágenes de tu espacio.</p>
+      <p class="note">Florenza VR · Servicio de visualización de Florenza Estudio Digital para Dekoramma.</p><p class="note">Modelo básico para probar visualización y cámara. Los colores son orientativos y las medidas están pendientes de verificación física. Esta página no graba ni sube imágenes de tu espacio.</p>
     </aside>
   </main>
+  <dialog id="camera-notice" aria-labelledby="camera-title">
+    <h2 id="camera-title">Antes de abrir tu cámara</h2>
+    <p>La cámara permite reconocer el piso y mostrar el sofá en tu espacio. Puedes salir del visor cuando quieras.</p>
+    <p>Esta demostración no graba ni envía a nuestros servidores fotos o videos de tu habitación. No solicita tu nombre, correo ni ubicación. El navegador o el visor de Apple o Google pueden gestionar permisos y datos según sus propias políticas.</p>
+    <details><summary>Privacidad y condiciones de esta prueba</summary>
+      <p>Florenza Estudio Digital facilita esta prueba de Florenza VR para Dekoramma. No se recopila un historial del escaneo ni se crea una cuenta. GitHub aloja la demostración y puede registrar datos de conexión según su política.</p>
+      <p>Las medidas y colores son orientativos. El visor no comprueba obstáculos ni sustituye la medición física. El uso de la prueba no supone una compra ni autorización para publicidad. Este aviso no limita los derechos legales del usuario.</p>
+      <p>Usa el visor en un espacio donde tengas autorización, evita enfocar personas o documentos privados y comprueba tu entorno antes de moverte. Puedes cerrar la experiencia y revocar el permiso de cámara en la configuración de tu navegador.</p><p>Aceptar este aviso no implica renunciar a conocer, actualizar o rectificar datos, solicitar prueba de autorización, presentar consultas o reclamos y ejercer los demás derechos que correspondan. Cada parte conserva sus obligaciones legales; no se trasladan al visitante.</p><p>La política definitiva de la tienda, la identificación completa del responsable y sus canales de atención están pendientes de aprobación por Dekoramma antes de operar en producción. Consulta comercial: dekoramma@gmail.com.</p>
+      <p><a target="_blank" rel="noopener" href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">Privacidad de GitHub</a> · <a target="_blank" rel="noopener" href="https://www.apple.com/legal/privacy/">Apple</a> · <a target="_blank" rel="noopener" href="https://policies.google.com/privacy">Google</a></p>
+    </details>
+    <label class="camera-consent"><input type="checkbox" id="camera-agree">He leído el aviso y quiero usar la cámara para esta visualización.</label>
+    <button id="camera-continue" class="primary" disabled>Aceptar y abrir cámara</button>
+    <button id="camera-cancel" class="secondary">Seguir sin cámara</button>
+    <small>Después, tu dispositivo pedirá el permiso correspondiente. No se registra esta casilla como una autorización contractual o comercial.</small>
+  </dialog>
   <footer>Desarrollo de Florenza Estudio Digital · Demostración técnica</footer>
 </body></html>
+
+
