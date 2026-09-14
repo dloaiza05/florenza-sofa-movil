@@ -1,0 +1,24 @@
+{
+  "dimensionsMeters": {
+    "width": 1.8999,
+    "depth": 1.0413,
+    "height": 0.8919
+  },
+  "objects": 30,
+  "vertices": 59162,
+  "files": [
+    {
+      "file": "sofa-190-gris.glb",
+      "bytes": 3559140
+    },
+    {
+      "file": "sofa-190-arena.glb",
+      "bytes": 3559140
+    },
+    {
+      "file": "sofa-190-petroleo.glb",
+      "bytes": 3559144
+    }
+  ],
+  "purpose": "Prototipo movil, medidas del archivo de trabajo pendientes de validacion fisica"
+}

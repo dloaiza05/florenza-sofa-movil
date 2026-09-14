@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Florenza · Sofá en tu espacio</title>
+  <link rel="stylesheet" href="viewer.css">
+  <script type="module" src="model-viewer.min.js"></script>
+  <script type="module" src="viewer.js"></script>
+</head>
+<body>
+  <header><a href="index.html" aria-label="Florenza, visor móvil">FLORENZA<span>ESTUDIO DIGITAL</span></a><span class="badge">Prueba de sofá · Dekoramma</span></header>
+  <main>
+    <section class="preview" aria-label="Vista del sofá">
+      <div class="intro"><span class="eyebrow">DEL MODELO A TU HOGAR</span><h1>Hazle espacio.</h1><p>Elige un color y descubre cómo se ve en tu sala.</p></div>
+      <model-viewer id="sofa" src="sofa-190-gris.glb" alt="Sofá de dos puestos, modelo de prueba de Blender en color gris" camera-controls touch-action="pan-y" shadow-intensity="1" shadow-softness="1" exposure="1" camera-orbit="25deg 75deg auto" field-of-view="30deg" ar ar-modes="webxr scene-viewer quick-look" ar-scale="fixed" ar-placement="floor" xr-environment loading="eager">
+        <div slot="progress-bar" id="progress" role="status">Cargando tu sofá… <span id="percent">0 %</span></div>
+        <button slot="ar-button" hidden aria-hidden="true" tabindex="-1">Ver en mi espacio</button>
+      </model-viewer>
+      <p class="dimensions">190 × 104 × 89 cm <span>· medidas del modelo de prueba</span></p>
+    </section>
+    <aside class="controls">
+      <span class="eyebrow">SOFÁ DE DOS PUESTOS</span><h2>Tu espacio, tu color.</h2>
+      <p class="label">Acabado: <strong id="color-name">Gris</strong></p>
+      <div class="colors" role="group" aria-label="Seleccionar color del sofá">
+        <button data-color="gris" aria-pressed="true"><i style="--swatch:#a1a6a3"></i>Gris</button>
+        <button data-color="arena" aria-pressed="false"><i style="--swatch:#d1c2aa"></i>Arena</button>
+        <button data-color="petroleo" aria-pressed="false"><i style="--swatch:#2c7e87"></i>Petróleo</button>
+      </div>
+      <button id="ar" class="primary" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M7 9l5-3 5 3v6l-5 3-5-3zM7 9l5 3 5-3m-5 3v6"/></svg>Ver en mi espacio</button>
+      <p id="status" role="status" aria-live="polite">Preparando el modelo…</p>
+      <button id="retry" class="secondary" hidden>Volver a cargar</button>
+      <details class="help"><summary>¿Cómo lo veo en mi sala?</summary><ol><li>Abre esta página en Safari de iPhone o Chrome de Android.</li><li>Escoge el color y toca «Ver en mi espacio».</li><li>Permite el uso de la cámara y apunta hacia un piso bien iluminado.</li><li>Sigue la indicación del teléfono para colocar el sofá.</li></ol><p>La cámara requiere un dispositivo compatible. Vuelve a esta página para escoger otro color. Puedes seguir viendo el modelo 3D si tu equipo no admite realidad aumentada.</p></details>
+      <details class="share"><summary>Pasar al celular</summary><img src="qr.svg" alt="Código QR para abrir este visor en el celular" width="168" height="168"><p><a id="share-link" href="https://dloaiza05.github.io/florenza-sofa-movil/">Abrir el visor móvil</a></p><button id="share" class="secondary">Compartir enlace</button></details>
+      <p class="note">Modelo básico para probar visualización y cámara. Los colores son orientativos y las medidas están pendientes de verificación física. Esta página no graba ni sube imágenes de tu espacio.</p>
+    </aside>
+  </main>
+  <footer>Desarrollo de Florenza Estudio Digital · Demostración técnica</footer>
+</body></html>
