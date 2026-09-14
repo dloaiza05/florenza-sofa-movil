@@ -79,7 +79,7 @@ for(const id of fitFields)document.querySelector('#fit-'+id).addEventListener('i
 // Only the same-origin embedding store may configure this viewer.
 function safeAsset(value,extension){
  if(typeof value!=="string"||value.length>500)return null;
- try{const u=new URL(value,location.href);return u.origin===location.origin && ["http:","https:"].includes(u.protocol) && !u.search && !u.hash && u.pathname.toLowerCase().endsWith(extension) ? u.href:null;}catch{return null;}
+ try{const u=new URL(value,location.href);if(u.protocol==='blob:'&&u.origin===location.origin&&u.hash.toLowerCase().endsWith(extension))return u.href;return u.origin===location.origin && ["http:","https:"].includes(u.protocol) && !u.search && !u.hash && u.pathname.toLowerCase().endsWith(extension) ? u.href:null;}catch{return null;}
 }
 window.addEventListener('message',event=>{
  if(window.parent===window || event.source!==window.parent || event.origin!==location.origin || event.data?.type!=='florenza:product')return;
@@ -92,6 +92,7 @@ window.addEventListener('message',event=>{
  if(!p)return;
  const main=safeAsset(p.modelUrl,'.glb');
  if(!main)return;
+ viewer.setAttribute('ar-modes',main.startsWith('blob:')?'webxr quick-look':'webxr scene-viewer quick-look');
  const dims=[p.width,p.depth,p.height];
  if(dims.some(x=>typeof x!=='number'||!Number.isFinite(x)||x<=0||x>1000))return;
  const settings=p.viewer||{};
